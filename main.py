@@ -45,11 +45,7 @@ if not ANDROID:
 from jnius import autoclass
 """
 Dans buildozer.spec
-# (str) Title of your application
-title = Kivy service OSC demo
-# (str) Package name
-package.name = oscservice
-# (str) Package domain (needed for android/ios packaging)
+package.name = accelerometer
 package.domain = org.kivy
 services = Pong:service.py
 
@@ -178,6 +174,7 @@ class AccelerometerApp(App):
             sleep(1)
 
         AccelerometerApp.get_running_app().stop()
+
 
 if __name__ == '__main__':
     AccelerometerApp().run()

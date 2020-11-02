@@ -56,9 +56,11 @@ class AccelerometerService:
         """
         self.server = OSCThreadServer()
         self.server.listen('localhost', port=3001, default=True)
+        # Les callbacks du serveur
         self.server.bind(b'/activity', self.on_activity)
         self.server.bind(b'/stop', self.on_stop)
         self.server.bind(b'/sensor_enable', self.on_sensor_enable)
+        # Un simple client
         self.client = OSCClient(b'localhost', 3003)
 
     def on_activity(self, msg):
@@ -88,7 +90,7 @@ class AccelerometerService:
         self.acc_act = np.zeros((500,), dtype=int)
 
     def sensor_init(self):
-        """accelerometer est une variable globale, non reconnue par le thread"""
+        """accelerometer est une variable globale"""
 
         print("Lancement de l'accéléromètre...")
         if self.sensor_enabled == 0:
